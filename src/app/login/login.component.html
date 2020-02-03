@@ -1,0 +1,57 @@
+<div class= "container-fluid" >
+  <form #userForm = "ngForm">
+    <div class= "form-group" >
+      <label>NAME</label>
+      <input type = "text" class="form-control" editable= "true" name="fname" [(ngModel)]="model.fname" required #fName="ngModel" pattern="^[_A-z]*((-|\s)*[_A-z])*$" maxlength="50">
+      <span *ngIf="fName.errors && fName.touched && fName.invalid && fName.errors.required" style="color: red">Name is Required</span>
+      <span *ngIf="fName.errors && fName.errors.pattern" style="color: red">Invalid First Name</span>
+      <br>
+      <label>SURNAME</label>
+      <input type = "text" class="form-control" name="lname" [(ngModel)]="model.lname" required #sName="ngModel" pattern="^[_A-z]*((-|\s)*[_A-z])*$" maxlength="50">
+      <span *ngIf="sName.errors && sName.touched && sName.invalid && sName.errors.required" style="color: red">Surname is Required</span>
+      <span *ngIf="sName.errors && sName.errors.pattern" style="color: red">Invalid Surname</span>
+      <br>
+      <label>PHONE</label>
+      <input type = "text" class="form-control" name="phone" [(ngModel)]="model.phone" required #phone="ngModel" pattern="[789][0-9]{9}">
+      <span *ngIf="phone.errors && phone.touched && phone.invalid && phone.errors.required" style="color: red">Phone is Required</span>
+      <span *ngIf="phone.errors && phone.errors.pattern" style="color: red">Invalid Phone Number</span>
+      <br>
+      <label>EMAIL ADDRESS</label>
+      <br>
+      <input type = "email" class="form-control" name="email" [(ngModel)]="model.email" required #email="ngModel"pattern="^[A-Za-z0-9._%+-]+@gmail.com$">
+      <span *ngIf="email.touched && email.invalid && email.errors.required" style="color: red">Email is Required</span>
+      <span *ngIf=" email.errors && email.errors.pattern" style="color: red">Enter Valid Email Address</span>
+      <br>
+      <label>EXPERIENCE</label>
+      <input type = "number" class="form-control" name="exp" [(ngModel)]="model.exp" required #exp="ngModel" maxlength="2" >
+      <span *ngIf="exp.touched && exp.invalid && exp.errors.required" style="color: red">Experienced is Required</span>
+    </div>       
+    <button type="submit" class="btn btn-primary" (click)="saveUser(model)" [disabled]="userForm.invalid || isInvalidStart ">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="view()">View Data</button>
+  </form>
+</div>
+
+<div *ngIf="displayData">
+<table>
+  <tr>
+  <th>ID</th>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Phone</th>
+  <th>Experience</th>
+  <th>Email</th>
+  <th>Delete Entry</th>
+  <th>Update Entry</th>
+</tr>
+<tr *ngFor= "let user of userList" >
+  <td>{{user.id}}</td>
+  <td>{{user.fname}}</td>
+  <td>{{user.lname}}</td>
+  <td>{{user.phone}}</td>
+  <td>{{user.exp}}</td>
+  <td>{{user.email}}</td>
+  <td><button type="button" class="btn btn-success" (click) = "delete(user)">Delete</button></td>
+  <td><button type="button" class="btn btn-success" (click) = "editUser(user)">Edit</button></td>
+</tr>
+</table>
+</div>

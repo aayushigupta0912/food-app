@@ -1,0 +1,49 @@
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 1000px; 
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+.column1{
+  background-size: cover;
+    background-image: url(src/assets/bg-detail.png);
+    background-attachment: fixed;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 1000px; 
+}
+.column2{
+    background-size: cover;
+      background-image: url(src/assets/chef-stamp@2x.png);
+      background-attachment: fixed;
+      float: left;
+      width: 25%;
+      padding: 10px;
+      height: 1000px; 
+  }
+  .column3{
+    background-size: cover;
+      background-image: url(src/assets/bg-detail.png);
+      background-attachment: fixed;
+      float: left;
+      width: 25%;
+      padding: 10px;
+      height: 1000px; 
+  }
+  .column4{
+    background-size: cover;
+      background-image: url(src/assets/chef-stamp@2x.png);
+      background-attachment: fixed;
+      float: left;
+      width: 25%;
+      padding: 10px;
+      height: 1000px; 
+  }
